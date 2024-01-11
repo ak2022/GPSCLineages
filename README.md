@@ -14,7 +14,7 @@ cp data/pam/team284/ak47/scratch/LineageScripts/* ./GPSCScripts
 ```
 or as part of this Github repo
 
-3) Make sure you have the monocle database available in your wd if using the built-in pf based sequence retrieval.
+3) Make sure you have the monocle database available in your the GPSCx working directory if using the built-in pf based sequence retrieval.
 
 4) Create a directory called GPSCx (whichever one you want to analyse) and navigate into it. 
 
