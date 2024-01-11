@@ -25,7 +25,7 @@ Get the sequences needed for the analysis. You can use the batching_pf.sh script
 
 This would submit a job to gather sequence IDs and paths for anything in monocle assigned to GPSC15. It will also look for the Reference Sequence in the form:
 ```
-/data/pam/team284/sl28/scratch/gps2245/trumps/GPSCs_v2/GPSC_files/GPSC$MYINPUT/reference/GPSC"$MYINPUT"_reference.fasta
+/data/pam/team284/sl28/scratch/gps2245/trumps/GPSCs_v2/GPSC_files/GPSCx/reference/GPSCx_reference.fasta
 ```
 And it will throw and error and quit if it cannot find it. 
 
