@@ -31,7 +31,7 @@ And it will throw and error and quit if it cannot find it.
 
 Once the sequences were gathered and stored in the directory ./seqs, they would be split into batches of fifty (and one batch of whatever the remainder is), and separate ska input files would be made for each batch. The ska input files can be found in the directory ./batches, along with a file listing the paths to each of those files. 
 ```
-bsub -M5000 -R "select[mem>5000] rusage[mem=5000]" -R "span[hosts=1]" -o Batcho.%J -e Batche.%J '../GPSCScripts/batching_pf.sh 15 50'
+bsub -M1000 -R "select[mem>1000] rusage[mem=1000]" -R "span[hosts=1]" -o Batcho.%J -e Batche.%J '../GPSCScripts/batching_pf.sh 15 50'
 ```
 
 
