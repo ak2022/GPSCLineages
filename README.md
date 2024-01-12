@@ -60,7 +60,7 @@ Ska allows you to merge multiple .skf files into one larger file. This is super 
 This should be fairly quick ad not need much memory. The output is a file called all_samples.skf
 
 ```
-bsub -M5000 -n16 -R "select[mem>5000] rusage[mem=5000]" -R "span[hosts=1]" -o mergeo.%J -e mergee.%J 'ska merge -o all_samples ./builds/build*'
+bsub -M8000 -n16 -R "select[mem>8000] rusage[mem=8000]" -R "span[hosts=1]" -o mergeo.%J -e mergee.%J 'ska merge -o all_samples ./builds/build*'
 ```
 
 
