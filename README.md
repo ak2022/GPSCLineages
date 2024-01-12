@@ -57,7 +57,7 @@ bsub -o buildo.%J -e builde.%J -n4 -R "select[mem>2000] rusage[mem=2000] span[ho
 ## Merging 
 Ska allows you to merge multiple .skf files into one larger file. This is super useful as it allows for the parallelisation of large numbers of sequences with the batching, and you can create split k-mer files for any new sequences and just tag them on here without having the rebuild the files for all the other sequences that were already present. Hooray! 🎉
 
-This should be fairly quick ad not need much memory. The output is a file called all_samples.skf
+The amount of memory you need for this depends on the number of sequences being merged. The output is a file called all_samples.skf
 
 ```
 bsub -M8000 -n16 -R "select[mem>8000] rusage[mem=8000]" -R "span[hosts=1]" -o mergeo.%J -e mergee.%J 'ska merge -o all_samples ./builds/build*'
