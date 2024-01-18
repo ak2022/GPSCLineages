@@ -26,7 +26,7 @@ You also need the directory Scripts, containing the scripts in this repo.
 A new directory, ./Outputs, will be created and the outputs for each job are stored there. 
 
 
-# First Time Reconstruction 1️⃣ 
+## First Time Reconstruction 1️⃣ 
 Run the script: 
 
 ```
@@ -35,14 +35,14 @@ Run the script:
 
 This will automatically submit jobs to bsub, with each job waiting until the one before has finished. 
 
-# Adding New Data ⏩
+## Adding New Data ⏩
 One benefit of this method is that you can add on new samples. To do this, put new sequences into their own directory e.g. ./NewSeqs. The final split k-mer file from the initial run must be available in the currentworking directory and called all_samples.skf. This script will then create a new split k-mer file for the new sequences, merge it with the previous split k-mer file, and proceed to map the sequences and create a tree as previously.
 
 ```
 ./Scripts/AddingSequences <Path to reference sequence> <Path to new sequences> <Batch Size>
 ```
 
-# Beware ⚠️
+## Beware ⚠️
 - Gubbins can take a long time. A really long time. The job is set to enter the long queue, but if it times out, you can run it again without having to redo everything by submitting. You can also try basement for a longer runtime. 
   
 ```
