@@ -52,6 +52,8 @@ bsub -J "TREE" -M8000 -R "select[mem>8000] rusage[mem=8000]" -n16 -R "span[hosts
 - If an earlier job fails, say due to there not being enough memory, the other jobs won't automatically exit. You'll need to use bkill to do this manually or wait for them to time out. 
 
 ## Data 📊
+As for GPSC2 - one of the largest (perhaps even THE largest number of sequences on monocle), with 
+
 ### Batching 📦
 - Approx. time to run a batching job: 15 seconds
 - Requested memory: 20MB
@@ -70,9 +72,9 @@ bsub -J "TREE" -M8000 -R "select[mem>8000] rusage[mem=8000]" -n16 -R "span[hosts
 - Output files: ./all_samples.skf
 
 ### Mapping 🗺️
-- Approx. time to run:
-- Approx. size of final file: 
-- Requested memory:
+- Approx. time to run: ~3 minutes
+- Approx. size of final file: 2GB
+- Requested memory: 15000MB
 - Output Files: SkaMap.aln
 
 
