@@ -26,7 +26,7 @@ You also need the directory Scripts, containing the scripts in this repo.
 A new directory, ./Outputs, will be created and the outputs for each job are stored there. 
 
 
-## First Time Reconstruction 1️⃣ 
+# First Time Reconstruction 1️⃣ 
 Run the script: 
 
 ```
@@ -50,5 +50,29 @@ bsub -J "TREE" -M8000 -R "select[mem>8000] rusage[mem=8000]" -n16 -R "span[hosts
 ```
 
 - If an earlier job fails, say due to there not being enough memory, the other jobs won't automatically exit. You'll need to use bkill to do this manually or wait for them to time out. 
+
+## Data 📊
+### Batching 📦
+Approx. time to run a batching job: 15 seconds
+Requested memory: 20MB
+Output Files: Everything in ./batches 
+
+### Building 🧱
+Approx. time to build a split k-mer files for 50 sequences: ~30 minutes
+Approx. size of each split k-mer file: ~20MB
+Requested Memory: 2000MB 
+Output Files: Everything in ./builds
+
+### Merging 🔄
+Approx. time to merge 21 split k-mer files: ~4.5 minutes
+Approx. size of final file: 485MB
+Requested memory: 15000MB
+Output files: ./all_samples.skf
+
+### Mapping 🗺️
+Approx. time to run:
+Approx. size of final file: 
+Requested memory:
+Output Files: SkaMap.aln
 
 
