@@ -18,7 +18,7 @@ mkdir ./Outputs
 
 ## Batch the Sequences
 echo "Batching..."
-bsub -J "BATCH" -M5000 -R "select[mem>5000] rusage[mem=5000]" -R "span[hosts=1]" -o ./Outputs/batcho.%J -e ./Outputs/batche.%J ./Scripts/batching.sh $GPSC $BATCHSIZE
+bsub -J "BATCH" -M20 -R "select[mem>20] rusage[mem=20]" -R "span[hosts=1]" -o ./Outputs/batcho.%J -e ./Outputs/batche.%J ./Scripts/batching.sh $GPSC $BATCHSIZE
 
 ## Wait until the final batch file exists - this is used as a marker that batching has finished 
 until [ -e ./Outputs/BATCH.txt ]; do
@@ -37,7 +37,7 @@ bsub -w "done(BATCH)" -o ./Outputs/buildo.%J -e ./Outputs/builde.%J -n4 -R "sele
 bsub -w "done(BUILD[1-$BATCHNUMBER])" -J "MERGE" -M8000 -n16 -R "select[mem>8000] rusage[mem=8000]" -R "span[hosts=1]" -o ./Outputs/mergeo.%J -e ./Outputs/mergee.%J 'ska merge -o all_samples ./builds/build*'
 
 ## Map the split k-mer files
-bsub -w "done(MERGE)" -J "MAP" -M5000 -n16 -R "select[mem>5000] rusage[mem=5000]" -R "span[hosts=1]" -o ./Outputs/mapo.%J -e ./Outputs/mape.%J ska map -o ./SkaMap.aln --ambig-mask --threads 16 $REFSEQ "all_samples.skf"
+bsub -w "done(MERGE)" -J "MAP" -M20000 -n16 -R "select[mem>20000] rusage[mem=20000]" -R "span[hosts=1]" -o ./Outputs/mapo.%J -e ./Outputs/mape.%J ska map -o ./SkaMap.aln --ambig-mask --threads 16 $REFSEQ "all_samples.skf"
 
-## Build the treebj
-bsub -w "done(MAP)" -J "TREE" -M8000 -R "select[mem>8000] rusage[mem=8000]" -n16 -R "span[hosts=1]" -o ./Outputs/Gubbinso.%J -e ./Outputs/Gubbinse.%J -q long 'run_gubbins.py --prefix Gubbins ./SkaMap.aln --threads 16 --first-tree-builder fasttree'
+## Build the trees
+bsub -w "done(MAP)" -J "TREE" -M8000 -R "select[mem>8000] rusage[mem=8000]" -n48 -R "span[hosts=1]" -o ./Outputs/Gubbinso.%J -e ./Outputs/Gubbinse.%J -q long 'run_gubbins.py --prefix Gubbins ./SkaMap.aln --threads 48 --first-tree-builder fasttree'

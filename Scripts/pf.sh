@@ -3,6 +3,9 @@
 MYINPUT=$1
 MYPATH=$PWD
 
+# Modules
+module load pf 
+
 ## Create the correct directories
 mkdir -p "$MYPATH/seqs"
 
