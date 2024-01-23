@@ -5,6 +5,8 @@ This method is faster than the previous multiple_mappings_to_bam method. It is a
 
 The workflow is that the sequences to be analysed are batched, and a split k-mer file is built for each batch as part of a job array. Once this has finished, the split k-mer files can be joined together into a single .skf file. Mapping is then done to create an alignment file, which can then be used in [Gubbins](https://github.com/nickjcroucher/gubbins) to produce the final tree.  
 
+DISCLAIMER: This is dependent on the Sanger HPC!
+
 ## Software Dependencies 💿
 These are checked for/installed in the script, but just in case:
 
