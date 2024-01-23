@@ -1,4 +1,6 @@
 # Ska-Based GPSC Lineage Reconstruction 🦠
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) 
+
 Reconstructing the GPSC lineages using [Ska2](https://github.com/bacpop/ska.rust)
 
 This method is faster than the previous multiple_mappings_to_bam method. It is also much more easy to add new sequences as they come in to each GPSC lineage. 
