@@ -19,7 +19,7 @@ This script requires you to be in the working directory where you want to store 
 
 Within that, you should have a directory called seqs which contains the sequences you'd like to analyse. This should also include the reference sequence for that particular GPSC, which can be copied to the seqs directory using: 
 ```
-cp /data/pam/team284/sl28/scratch/gps2245/trumps/GPSCs_v2/GPSC_files/GPSCx/reference/GPSCx_reference.fasta ./seqs
+cp /data/pam/team284/sl28/scratch/gps2245/trumps/GPSCs_v2/GPSC_files/GPSCx/reference/GPSCx_reference.fasta seqs
 ```
 You also need the directory Scripts, containing the scripts in this repo. 
 
@@ -39,7 +39,7 @@ This will automatically submit jobs to bsub, with each job waiting until the one
 One benefit of this method is that you can add on new samples. To do this, put new sequences into their own directory e.g. ./NewSeqs. The final split k-mer file from the initial run must be available in the currentworking directory and called all_samples.skf. This script will then create a new split k-mer file for the new sequences, merge it with the previous split k-mer file, and proceed to map the sequences and create a tree as previously.
 
 ```
-./Scripts/AddingSequences <Path to reference sequence> <Path to new sequences> <Batch Size>
+./Scripts/AddingSequences.sh <Path to reference sequence> <Path to new sequences> <Batch Size>
 ```
 
 ## Beware ⚠️
