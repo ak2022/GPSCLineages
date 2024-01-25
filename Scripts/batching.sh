@@ -1,7 +1,5 @@
 #!/bin/bash
-
-MYINPUT=$1
-BATCHSIZE=$2
+BATCHSIZE=50
 MYPATH=$PWD
 
 ## Create the correct directories

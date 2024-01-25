@@ -1,8 +1,6 @@
 #!/bin/bash
-## Get the input from the command line
+## Get the reference sequence name from the command line
 REFSEQ=$1
-GPSC=$2
-BATCHSIZE=$3
 
 ## Load the modules
 module load ska.rust/0.3.4
@@ -10,15 +8,13 @@ module load gubbins/3.2.1
 
 ## Report Back
 echo "Reference Sequence path is $REFSEQ"
-echo "Analysing GPSC$GPSC"
-echo "Batch size of $BATCHSIZE"
 
 ## Create a directory for the Outputs
 mkdir ./Outputs
 
 ## Batch the Sequences
 echo "Batching..."
-bsub -J "BATCH" -M20 -R "select[mem>20] rusage[mem=20]" -R "span[hosts=1]" -o ./Outputs/batcho.%J -e ./Outputs/batche.%J ./Scripts/batching.sh $GPSC $BATCHSIZE
+bsub -J "BATCH" -M20 -R "select[mem>20] rusage[mem=20]" -R "span[hosts=1]" -o ./Outputs/batcho.%J -e ./Outputs/batche.%J ./Scripts/batching.sh
 
 ## Wait until the final batch file exists - this is used as a marker that batching has finished 
 until [ -e ./Outputs/BATCH.txt ]; do
